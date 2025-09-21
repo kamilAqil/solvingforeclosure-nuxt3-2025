@@ -1,25 +1,27 @@
 <script setup>
-import HeroSection from '~/components/home_page/HeroSection.vue';
-import StepProcess from '~/components/home_page/StepProcess.vue';
-import WhyChooseUs from '~/components/home_page/WhyChooseUs.vue';
-import Testimonials from '~/components/home_page/Testimonials.vue';
-import MeetTheTeam from '~/components/home_page/MeetTheTeam.vue';
-import FAQ from '~/components/home_page/FAQ.vue';
-import ContactForm from '~/components/home_page/ContactForm.vue';
-import WhoWeHelp from '~/components/home_page/WhoWeHelp.vue';
+import HeroSection from '~/components/solving_foreclosure/HeroSection.vue';
+import { useGeoCity } from '~/composables/useGeoCity';
+import TimelineSection from '~/components/solving_foreclosure/TimelineAndResources.vue';
+import Options from "~/components/solving_foreclosure/Options.vue";
+import AgentVsInvestor from '~/components/solving_foreclosure/AgentVsInvestor.vue';
+import FAQ from '~/components/solving_foreclosure/FAQ.vue';
+import ContactForm from '~/components/solving_foreclosure/ContactForm.vue';
 definePageMeta({
-  layout: 'default',
+  layout: 'sf',
 })
 </script>
 
 <template>
   <HeroSection />
-  <StepProcess />
-  <WhyChooseUs />
-  <Testimonials />
-  <WhoWeHelp />
-  <MeetTheTeam />
-  <FAQ />
+  <!-- timeline -->
+  <TimelineSection />
+  <!-- options -->
+  <Options />
+  <!-- agent vs investor -->
+  <AgentVsInvestor city="Your Area" />
+  <!-- FAQ -->
+  <FAQ city="Your Area" />
+  <!-- contact form -->
   <ContactForm />
 </template>
 

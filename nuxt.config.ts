@@ -1,9 +1,20 @@
+import { topics } from './composables/useCities'
+import { allCitySlugs } from './composables/useCities'
+
+const citySlugs = allCitySlugs()
+const topicRoutes = topics.flatMap((t) => citySlugs.map((c) => `/${t}/${c}`))
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
   modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-gtag'],
-  gtag: { id: 'G-WBKWLJ15E6' },
+
+  // GA4 via nuxt-gtag (reads env)
+  gtag: {
+    id: process.env.GTAG_ID || '',
+    config: { anonymize_ip: true },
+  },
 
   ui: { icons: ['heroicons'] },
 
@@ -14,36 +25,41 @@ export default defineNuxtConfig({
 
   image: {
     provider: 'imagekit',
-    imagekit: { baseURL: 'https://ik.imagekit.io/s6a52okgg' }
+    imagekit: {
+      baseURL: process.env.NUXT_PUBLIC_IMAGEKIT_BASE_URL || 'https://ik.imagekit.io/s6a52okgg'
+    }
   },
 
-  // ⬇️ Important for Prisma + Nitro
+  // Prisma + Nitro
   nitro: {
     preset: 'node-server',
     externals: {
-      // Keep Prisma external so Nitro doesn't transform the client runtime blob
       external: ['@prisma/client', 'prisma'],
       inline: []
     },
-    // Avoid executing server code (and Prisma) at build time
     prerender: {
       crawlLinks: false,
-      routes: []
+      routes: [
+        ...topicRoutes
+      ]
     }
   },
 
   runtimeConfig: {
     // server-only (safe)
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-    sendGridApiKey: process.env.NUXT_SENDGRID_API_KEY, // keep camelCase since you used it that way
+    sendGridApiKey: process.env.NUXT_SENDGRID_API_KEY,
     sendGridFrom: process.env.NUXT_SENDGRID_FROM,
     sendGridTo: process.env.NUXT_SENDGRID_TO,
-    databaseUrl: process.env.DATABASE_URL,
+    // Prefer DATABASE_URL; fall back to POSTGRES_URL if present
+    databaseUrl: process.env.DATABASE_URL || process.env.POSTGRES_URL,
 
-    // client-exposed (public) — DO NOT put secrets here
+    // client-exposed (public) — do NOT put secrets here
     public: {
-      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
-      // ⚠️ removed sendGrid* and databaseUrl from here
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://solvingforeclosure.com',
+      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+      gtagId: process.env.GTAG_ID || ''
     }
   }
 })
+

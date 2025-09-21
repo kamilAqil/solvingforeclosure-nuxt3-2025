@@ -1,8 +1,8 @@
 <template>
-  <UApp>
+
     <Navbar />
     <slot />
-  </UApp>
+ 
 </template>
 
 <script setup>
