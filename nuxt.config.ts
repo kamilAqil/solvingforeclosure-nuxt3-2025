@@ -1,8 +1,7 @@
-import { topics } from './composables/useCities'
-import { allCitySlugs } from './composables/useCities'
+import { topics, allCitySlugs } from './utils/locations'
 
 const citySlugs = allCitySlugs()
-const topicRoutes = topics.flatMap((t) => citySlugs.map((c) => `/${t}/${c}`))
+const topicRoutes = topics.flatMap(t => citySlugs.map(c => `/${t}/${c}`))
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -18,6 +17,7 @@ export default defineNuxtConfig({
 
   ui: { icons: ['heroicons'] },
 
+  // Auto-import your components dir
   imports: { dirs: ['~/components'] },
   components: { global: true },
 
@@ -26,40 +26,46 @@ export default defineNuxtConfig({
   image: {
     provider: 'imagekit',
     imagekit: {
-      baseURL: process.env.NUXT_PUBLIC_IMAGEKIT_BASE_URL || 'https://ik.imagekit.io/s6a52okgg'
+      baseURL:
+        process.env.NUXT_PUBLIC_IMAGEKIT_BASE_URL ||
+        'https://ik.imagekit.io/s6a52okgg'
     }
   },
 
-  // Prisma + Nitro
+  // Vercel-friendly output + Prisma externals
   nitro: {
-    preset: 'node-server',
+    preset: 'vercel',
     externals: {
       external: ['@prisma/client', 'prisma'],
       inline: []
     },
     prerender: {
       crawlLinks: false,
-      routes: [
-        ...topicRoutes
-      ]
+      routes: topicRoutes,
+      // Optional safety net during rollout:
+      // failOnError: false
     }
   },
 
+  // If the cross-product gets huge, consider ISR instead of prerender:
+  // routeRules: {
+  //   '/:topic/:city': { isr: 3600 } // revalidate hourly
+  // },
+
   runtimeConfig: {
-    // server-only (safe)
+    // server-only
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     sendGridApiKey: process.env.NUXT_SENDGRID_API_KEY,
     sendGridFrom: process.env.NUXT_SENDGRID_FROM,
     sendGridTo: process.env.NUXT_SENDGRID_TO,
-    // Prefer DATABASE_URL; fall back to POSTGRES_URL if present
     databaseUrl: process.env.DATABASE_URL || process.env.POSTGRES_URL,
 
-    // client-exposed (public) — do NOT put secrets here
+    // public (client-exposed) — never put secrets here
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://solvingforeclosure.com',
+      siteUrl:
+        process.env.NUXT_PUBLIC_SITE_URL || 'https://solvingforeclosure.com',
       googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
       gtagId: process.env.GTAG_ID || ''
     }
   }
 })
-

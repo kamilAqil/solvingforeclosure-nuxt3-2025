@@ -6,6 +6,7 @@ import Options from "~/components/solving_foreclosure/Options.vue";
 import AgentVsInvestor from '~/components/solving_foreclosure/AgentVsInvestor.vue';
 import FAQ from '~/components/solving_foreclosure/FAQ.vue';
 import ContactForm from '~/components/solving_foreclosure/ContactForm.vue';
+import MeetTheTeam from '~/components/solving_foreclosure/MeetTheTeam.vue';
 definePageMeta({
   layout: 'sf',
 })
@@ -23,6 +24,8 @@ definePageMeta({
   <FAQ city="Your Area" />
   <!-- contact form -->
   <ContactForm />
+  <!-- meet the team -->
+  <MeetTheTeam />
 </template>
 
 <style scoped>
