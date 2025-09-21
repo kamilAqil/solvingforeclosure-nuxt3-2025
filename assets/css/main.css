@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+
+:root {
+   --ui-bg: #fcfcfc;
+  --ui-text: #425275;
+
+  --ui-primary: #45669d;
+  --ui-secondary: #497bc5;
+  --ui-tertiary: #4d90ed;
+
+  --ui-info: #209cee;     /* optional info color */
+  --ui-success: #48c78e;  /* optional success color */
+  --ui-warning: #ffdd57;  /* optional warning color */
+  --ui-error: #f14668;    /* optional error color */
+}
+
+
+
+.text-highlighted {
+  color: var(--ui-primary);
+}
+
+
+
+
+h2 {
+  color : var(--ui-secondary);
+}
+

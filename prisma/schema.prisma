@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model buyer {
+  buyer_id                   Int                  @id @default(autoincrement())
+  mailing_city               String?              @db.VarChar(255)
+  mailing_state              String?              @db.VarChar(255)
+  mailing_zip                String?              @db.VarChar(20)
+  previous_owner_1_full_name String?              @db.VarChar(255)
+  previous_owner_2_full_name String?              @db.VarChar(255)
+  mailing_street             String?              @db.VarChar(255)
+  flipped_properties         flipped_properties[]
+}
+
+model buyers_list {
+  nameinput                   String? @db.VarChar
+  emailinput                  String  @db.VarChar
+  phonenumberinput            String? @db.VarChar
+  bed                         String? @db.VarChar
+  bath                        String? @db.VarChar
+  sqft                        String? @db.VarChar
+  lowpurchaseprice            String? @db.VarChar
+  high                        String? @db.VarChar
+  jobtypes                    String? @db.VarChar
+  fiancesource                String? @db.VarChar
+  preferredzipcodes           String? @db.VarChar
+  roi                         String? @db.VarChar
+  dislikes                    String? @db.VarChar
+  propertytypes               String? @db.VarChar
+  closingtime                 String? @db.VarChar
+  preferred_method_of_contact String? @db.VarChar
+  buymlsdeals                 String? @db.VarChar
+  agree_to_fee                String? @db.VarChar
+  buyer_id                    Int     @id @default(autoincrement())
+}
+
+model flipped_properties {
+  property_id   Int       @id @default(autoincrement())
+  buyer_id      Int?
+  privy_cma_url String?   @db.VarChar(255)
+  date_sold     DateTime? @db.Date
+  buyer         buyer?    @relation(fields: [buyer_id], references: [buyer_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model leads {
+  id                   BigInt   @id @default(autoincrement())
+  address              String
+  name                 String?
+  email                String?
+  property_condition   Int?     @db.SmallInt
+  timeline             String?
+  property_description String?
+  user_agent           String?
+  ip                   String?  @db.Inet
+  created_at           DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([created_at], map: "idx_leads_created_at")
+  @@index([email], map: "idx_leads_email")
+}
