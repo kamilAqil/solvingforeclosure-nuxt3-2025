@@ -1,7 +1,5 @@
-import { topics, allCitySlugs } from './utils/locations'
-
-const citySlugs = allCitySlugs()
-const topicRoutes = topics.flatMap(t => citySlugs.map(c => `/${t}/${c}`))
+// nuxt.config.ts
+import { topicCityRoutes } from './utils/locations'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -9,15 +7,15 @@ export default defineNuxtConfig({
 
   modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-gtag'],
 
-  // GA4 via nuxt-gtag (reads env)
+  // GA4 via nuxt-gtag
   gtag: {
     id: process.env.GTAG_ID || '',
-    config: { anonymize_ip: true },
+    config: { anonymize_ip: true }
   },
 
   ui: { icons: ['heroicons'] },
 
-  // Auto-import your components dir
+  // Auto-import components
   imports: { dirs: ['~/components'] },
   components: { global: true },
 
@@ -32,22 +30,25 @@ export default defineNuxtConfig({
     }
   },
 
-  // Vercel-friendly output + Prisma externals
   nitro: {
+    // Use Vercel output if deploying on Vercel
     preset: 'vercel',
+
+    // Prisma stays external so serverless bundling is happy
     externals: {
       external: ['@prisma/client', 'prisma'],
       inline: []
     },
+
     prerender: {
       crawlLinks: false,
-      routes: topicRoutes,
-      // Optional safety net during rollout:
+      routes: topicCityRoutes,
+      // During debugging you can keep builds going:
       // failOnError: false
     }
   },
 
-  // If the cross-product gets huge, consider ISR instead of prerender:
+  // If you plan to add many more routes later, consider ISR instead of prerender:
   // routeRules: {
   //   '/:topic/:city': { isr: 3600 } // revalidate hourly
   // },
@@ -60,7 +61,7 @@ export default defineNuxtConfig({
     sendGridTo: process.env.NUXT_SENDGRID_TO,
     databaseUrl: process.env.DATABASE_URL || process.env.POSTGRES_URL,
 
-    // public (client-exposed) — never put secrets here
+    // public (client-exposed) — no secrets here
     public: {
       siteUrl:
         process.env.NUXT_PUBLIC_SITE_URL || 'https://solvingforeclosure.com',

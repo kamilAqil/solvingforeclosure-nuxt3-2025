@@ -1,6 +1,5 @@
 <script setup>
 import HeroSection from '~/components/solving_foreclosure/HeroSection.vue';
-import { useGeoCity } from '~/composables/useGeoCity';
 import TimelineSection from '~/components/solving_foreclosure/TimelineAndResources.vue';
 import Options from "~/components/solving_foreclosure/Options.vue";
 import AgentVsInvestor from '~/components/solving_foreclosure/AgentVsInvestor.vue';

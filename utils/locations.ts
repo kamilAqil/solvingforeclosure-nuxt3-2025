@@ -1,14 +1,26 @@
 // Plain build-safe data (no Nuxt/Vue APIs here)
 
+// --- helpers ---
+const toSlug = (s: string) =>
+  s
+    ?.toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+
+const uniq = <T,>(arr: T[]) => Array.from(new Set(arr))
+
+// --- topics ---
 export const topics = [
   'postpone-foreclosure',
   'stop-auction',
   'loan-modification',
   'reinstate-loan',
   'sell-before-auction'
-]
+].map(toSlug)
 
-// Cities within ~50 miles of 92802
+// --- cities grouped by county/area ---
 export const counties = {
   orange: [
     'aliso-viejo','anaheim','brea','buena-park','costa-mesa','cypress','dana-point',
@@ -36,24 +48,43 @@ export const counties = {
     'rialto','bloomington','colton','san-bernardino','loma-linda','grand-terrace',
     'redlands','highland','yucaipa'
   ]
-}
+} as const
+
+// --- derived city lists ---
+const _allCities = Object.values(counties).flat().map(toSlug)
+export const citySlugs: string[] = uniq(_allCities)
+
+// Sets for O(1) membership checks in guards
+export const topicSet = new Set(topics)
+export const citySet  = new Set(citySlugs)
 
 // Pretty labels for UI/runtime use
-const proper = (slug) =>
+const proper = (slug: string) =>
   slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ')
 
 export const cityMeta = (() => {
-  const map = {}
+  const map: Record<string, { name: string; countyGroup: string; state: 'CA' }> = {}
   for (const [group, arr] of Object.entries(counties)) {
     for (const slug of arr) {
-      map[slug] = {
-        name: proper(slug),
-        countyGroup: group, // 'orange' | 'riverside' | 'losAngeles_BC' | 'sanBernardino_BC'
-        state: 'CA'
-      }
+      const s = toSlug(slug)
+      map[s] = { name: proper(s), countyGroup: group, state: 'CA' }
     }
   }
   return map
 })()
 
-export const allCitySlugs = () => [...new Set(Object.values(counties).flat())]
+// Cross-product for prerendering and/or sitemaps
+export const topicCityRoutes: string[] = topics.flatMap(t =>
+  citySlugs.map(c => `/${t}/${c}`)
+)
+
+// Optional debug (enable with NUXT_LOG_LOCATIONS=1)
+if (process.env.NUXT_LOG_LOCATIONS === '1') {
+  // Keep it short to avoid noisy CI logs
+  // eslint-disable-next-line no-console
+  console.log('[locations] topics:', topics.length, topics.slice(0, 5))
+  // eslint-disable-next-line no-console
+  console.log('[locations] cities:', citySlugs.length, citySlugs.slice(0, 10))
+  // eslint-disable-next-line no-console
+  console.log('[locations] sample routes:', topicCityRoutes.slice(0, 5))
+}
