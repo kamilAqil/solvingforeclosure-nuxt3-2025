@@ -3,7 +3,11 @@
     <UContainer class="flex items-center justify-between py-3">
       <!-- Wordmark -->
       <NuxtLink to="/" class="flex items-center gap-2 text-base font-semibold text-ink">
-        Solving Foreclosure
+        <img
+          src="https://ik.imagekit.io/s6a52okgg/Solving-Foreclosure/solving_foreclosure_logo.svg?updatedAt=1760507933186"
+          alt="Solving Foreclosure logo"
+          class="h-8 w-auto"
+        />
       </NuxtLink>
 
       <!-- Desktop nav -->

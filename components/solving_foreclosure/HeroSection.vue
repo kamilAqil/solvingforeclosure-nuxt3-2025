@@ -1,81 +1,87 @@
-<script setup>
-import { useRoute, useRouter, useFetch } from '#imports'
-
-const props = defineProps({
-  // Optional overrides (useful on non-[topic]/[city] pages)
-  city: { type: String, default: '' },
-  topic: { type: String, default: '' },
-
-  // Scroll targets (ids or hashes)
-  primaryTarget:  { type: String, default: '#options' },
-  contactTarget:  { type: String, default: '#contact' }
-})
-
-const route = useRoute()
-const router = useRouter()
-
-const pretty = (s = '') =>
-  s.split('-').map(w => (w ? w[0].toUpperCase() + w.slice(1) : '')).join(' ')
-
-/* --- Read city/topic from route (pretty-cased) --- */
-const routeCitySlug  = computed(() => String(route.params.city || ''))
-const cityFromRoute  = computed(() => routeCitySlug.value ? pretty(routeCitySlug.value) : '')
-const routeTopicSlug = computed(() => String(route.params.topic || 'postpone-foreclosure'))
-const topicTitle     = computed(() => props.topic || pretty(routeTopicSlug.value))
-
-/* --- SSR fetch of IP-based city (no prompt) --- */
-const { data: geo } = await useFetch('/api/geo', {
-  server: true,
-  default: () => ({ city: null, state: null, slug: null })
-})
-const ipCityLabel = computed(() => geo.value?.city || 'your area')
-
-/* --- Final city shown in H1 & hint line --- */
-const displayCity = computed(() => props.city || cityFromRoute.value || ipCityLabel.value)
-
-function scrollToHash(hash) {
-  const id = hash.startsWith('#') ? hash.slice(1) : hash
-  const el = document.getElementById(id)
-  if (el) {
-    const offset = 64 // adjust if your header height differs
-    const y = el.getBoundingClientRect().top + window.scrollY - offset
-    window.scrollTo({ top: y, behavior: 'smooth' })
-  } else {
-    router.push({ hash: `#${id}` })
-  }
-}
-
-function onPrimary()  { scrollToHash(props.primaryTarget) }
-function onSecondary(){ scrollToHash(props.contactTarget) }
-</script>
-
+<!-- components/HeroTheme.vue -->
 <template>
-  <!-- Mobile-first; responsive on md/lg -->
-  <section class="px-4 md:px-6 lg:px-8 pt-5 pb-4 md:pb-6 space-y-3 md:space-y-4 max-w-md md:max-w-2xl lg:max-w-3xl mx-auto">
-    <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold leading-snug">
-      How to {{ topicTitle }} in {{ displayCity }}, CA
-    </h1>
+  <section
+    class="relative overflow-hidden rounded-2xl border border-emerald-100 bg-white"
+    aria-labelledby="hero-title"
+  >
+    <!-- soft mint wash & radial glow (very light) -->
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-white to-emerald-50/40"></div>
+    <div class="pointer-events-none absolute -top-20 -right-16 h-72 w-72 rounded-full bg-emerald-200/20 blur-3xl"></div>
 
-    <p class="text-sm md:text-base text-slate-600">
-      Foreclosure timeline matters. Compare reinstatement, forbearance, loan modification,
-      or a quick sale—plain-English guidance, local help.
-    </p>
+    <!-- subtle dotted pattern (keeps it on-brand without a photo) -->
+    <svg class="absolute inset-0 opacity-[0.12]" aria-hidden="true">
+      <defs>
+        <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dots)" class="text-emerald-200" />
+    </svg>
 
-    <div class="grid grid-cols-2 gap-2 md:max-w-sm">
-      <button class="btn-primary" @click="onPrimary">See My Options</button>
-      <button class="btn-outline" @click="onSecondary">Talk to a Specialist</button>
+    <div class="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16">
+      <!-- left-aligned to match your section headings -->
+      <div class="max-w-2xl">
+        <p class="mb-2 text-sm font-medium text-emerald-700/80">
+          Clear steps • Local help • No pressure
+        </p>
+
+        <h1 id="hero-title" class="mb-3 text-3xl md:text-5xl font-bold leading-tight text-slate-900">
+          {{ title }}
+        </h1>
+
+        <p class="mb-7 text-base md:text-lg text-slate-600">
+          {{ subtitle }}
+        </p>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <!-- primary CTA styled like your header button -->
+          <NuxtLink
+            :to="ctaLink"
+            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700 active:translate-y-[1px] transition"
+          >
+            {{ ctaText }}
+          </NuxtLink>
+
+          <!-- secondary text link that matches your body links -->
+          <NuxtLink
+            to="#timelines"
+            class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+          >
+            See foreclosure timelines
+          </NuxtLink>
+        </div>
+
+       
+      </div>
     </div>
 
-    <div class="flex flex-wrap gap-2 md:gap-3 pt-1">
-      <span class="chip">Local team</span>
-      <span class="chip">No obligation</span>
-      <span class="chip">No pressure</span>
-      <span class="chip">Honest timelines</span>
-    </div>
-
-    <!-- Soft location line (no geocoding prompt) -->
-    <p class="text-xs md:text-sm text-slate-500">
-      Serving homeowners in {{ ipCityLabel }}
-    </p>
+    <!-- soft bottom divider that hands off to content -->
+    <svg class="absolute -bottom-px left-0 w-full text-emerald-50" viewBox="0 0 1440 40" fill="currentColor" aria-hidden="true">
+      <path d="M0,0 C300,40 1140,0 1440,40 L1440,40 L0,40 Z"></path>
+    </svg>
   </section>
 </template>
+
+<script setup>
+const props = defineProps({
+  title: { type: String, default: 'Understand Every Step of the Foreclosure Process' },
+  subtitle: {
+    type: String,
+    default:
+      'Notice of Default → Notice of Trustee Sale → Auction. Understand each phase and choose your next step with confidence.'
+  },
+  ctaText: { type: String, default: 'Talk to a specialist' },
+  ctaLink: { type: String, default: '#contact' }
+})
+</script>
+
+
+<style scoped>
+h1 {
+  color : #fbbf24; /* Tailwind's yellow-400 */
+}
+section {
+  color: white;
+  transition: background 0.3s ease-in-out;
+}
+</style>
