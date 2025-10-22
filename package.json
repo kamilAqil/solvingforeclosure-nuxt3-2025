@@ -5,7 +5,6 @@
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
     "preview": "nuxt preview",
-    "generate": "nuxt generate",
     "postinstall": "nuxt prepare && prisma generate",
     "migrate:deploy": "prisma migrate deploy",
     "testDO" : "rm -rf .nuxt node_modules && npm install && nuxt build && nuxt generate && nuxt start"

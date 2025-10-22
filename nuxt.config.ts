@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 
   nitro: {
     // Use Vercel output if deploying on Vercel
-    preset: 'vercel',
+    preset: 'node-server',
 
     // Prisma stays external so serverless bundling is happy
     externals: {
