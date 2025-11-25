@@ -1,0 +1,559 @@
+{
+  "california": {
+    "aliso-viejo": {
+      "name": "Aliso Viejo",
+      "state": "California",
+      "county": "Orange"
+    },
+    "anaheim": {
+      "name": "Anaheim",
+      "state": "California",
+      "county": "Orange"
+    },
+    "brea": {
+      "name": "Brea",
+      "state": "California",
+      "county": "Orange"
+    },
+    "buena-park": {
+      "name": "Buena Park",
+      "state": "California",
+      "county": "Orange"
+    },
+    "costa-mesa": {
+      "name": "Costa Mesa",
+      "state": "California",
+      "county": "Orange"
+    },
+    "cypress": {
+      "name": "Cypress",
+      "state": "California",
+      "county": "Orange"
+    },
+    "dana-point": {
+      "name": "Dana Point",
+      "state": "California",
+      "county": "Orange"
+    },
+    "fountain-valley": {
+      "name": "Fountain Valley",
+      "state": "California",
+      "county": "Orange"
+    },
+    "fullerton": {
+      "name": "Fullerton",
+      "state": "California",
+      "county": "Orange"
+    },
+    "garden-grove": {
+      "name": "Garden Grove",
+      "state": "California",
+      "county": "Orange"
+    },
+    "huntington-beach": {
+      "name": "Huntington Beach",
+      "state": "California",
+      "county": "Orange"
+    },
+    "irvine": {
+      "name": "Irvine",
+      "state": "California",
+      "county": "Orange"
+    },
+    "la-habra": {
+      "name": "La Habra",
+      "state": "California",
+      "county": "Orange"
+    },
+    "la-palma": {
+      "name": "La Palma",
+      "state": "California",
+      "county": "Orange"
+    },
+    "laguna-beach": {
+      "name": "Laguna Beach",
+      "state": "California",
+      "county": "Orange"
+    },
+    "laguna-hills": {
+      "name": "Laguna Hills",
+      "state": "California",
+      "county": "Orange"
+    },
+    "laguna-niguel": {
+      "name": "Laguna Niguel",
+      "state": "California",
+      "county": "Orange"
+    },
+    "laguna-woods": {
+      "name": "Laguna Woods",
+      "state": "California",
+      "county": "Orange"
+    },
+    "lake-forest": {
+      "name": "Lake Forest",
+      "state": "California",
+      "county": "Orange"
+    },
+    "los-alamitos": {
+      "name": "Los Alamitos",
+      "state": "California",
+      "county": "Orange"
+    },
+    "mission-viejo": {
+      "name": "Mission Viejo",
+      "state": "California",
+      "county": "Orange"
+    },
+    "newport-beach": {
+      "name": "Newport Beach",
+      "state": "California",
+      "county": "Orange"
+    },
+    "orange": {
+      "name": "Orange",
+      "state": "California",
+      "county": "Orange"
+    },
+    "placentia": {
+      "name": "Placentia",
+      "state": "California",
+      "county": "Orange"
+    },
+    "rancho-santa-margarita": {
+      "name": "Rancho Santa Margarita",
+      "state": "California",
+      "county": "Orange"
+    },
+    "san-clemente": {
+      "name": "San Clemente",
+      "state": "California",
+      "county": "Orange"
+    },
+    "san-juan-capistrano": {
+      "name": "San Juan Capistrano",
+      "state": "California",
+      "county": "Orange"
+    },
+    "santa-ana": {
+      "name": "Santa Ana",
+      "state": "California",
+      "county": "Orange"
+    },
+    "seal-beach": {
+      "name": "Seal Beach",
+      "state": "California",
+      "county": "Orange"
+    },
+    "stanton": {
+      "name": "Stanton",
+      "state": "California",
+      "county": "Orange"
+    },
+    "tustin": {
+      "name": "Tustin",
+      "state": "California",
+      "county": "Orange"
+    },
+    "villa-park": {
+      "name": "Villa Park",
+      "state": "California",
+      "county": "Orange"
+    },
+    "westminster": {
+      "name": "Westminster",
+      "state": "California",
+      "county": "Orange"
+    },
+    "yorba-linda": {
+      "name": "Yorba Linda",
+      "state": "California",
+      "county": "Orange"
+    },
+    "corona": {
+      "name": "Corona",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "norco": {
+      "name": "Norco",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "eastvale": {
+      "name": "Eastvale",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "jurupa-valley": {
+      "name": "Jurupa Valley",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "riverside": {
+      "name": "Riverside",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "moreno-valley": {
+      "name": "Moreno Valley",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "perris": {
+      "name": "Perris",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "lake-elsinore": {
+      "name": "Lake Elsinore",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "canyon-lake": {
+      "name": "Canyon Lake",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "menifee": {
+      "name": "Menifee",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "wildomar": {
+      "name": "Wildomar",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "murrieta": {
+      "name": "Murrieta",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "temecula": {
+      "name": "Temecula",
+      "state": "California",
+      "county": "Riverside"
+    },
+    "los-angeles": {
+      "name": "Los Angeles",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "long-beach": {
+      "name": "Long Beach",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "carson": {
+      "name": "Carson",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "compton": {
+      "name": "Compton",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "lynwood": {
+      "name": "Lynwood",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "south-gate": {
+      "name": "South Gate",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "huntington-park": {
+      "name": "Huntington Park",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "maywood": {
+      "name": "Maywood",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "cudahy": {
+      "name": "Cudahy",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "bell": {
+      "name": "Bell",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "bell-gardens": {
+      "name": "Bell Gardens",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "paramount": {
+      "name": "Paramount",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "bellflower": {
+      "name": "Bellflower",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "lakewood": {
+      "name": "Lakewood",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "downey": {
+      "name": "Downey",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "norwalk": {
+      "name": "Norwalk",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "cerritos": {
+      "name": "Cerritos",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "artesia": {
+      "name": "Artesia",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "hawaiian-gardens": {
+      "name": "Hawaiian Gardens",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "la-mirada": {
+      "name": "La Mirada",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "whittier": {
+      "name": "Whittier",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "pico-rivera": {
+      "name": "Pico Rivera",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "montebello": {
+      "name": "Montebello",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "monterey-park": {
+      "name": "Monterey Park",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "alhambra": {
+      "name": "Alhambra",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "san-gabriel": {
+      "name": "San Gabriel",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "rosemead": {
+      "name": "Rosemead",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "el-monte": {
+      "name": "El Monte",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "south-el-monte": {
+      "name": "South El Monte",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "baldwin-park": {
+      "name": "Baldwin Park",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "la-puente": {
+      "name": "La Puente",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "west-covina": {
+      "name": "West Covina",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "covina": {
+      "name": "Covina",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "azusa": {
+      "name": "Azusa",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "glendora": {
+      "name": "Glendora",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "duarte": {
+      "name": "Duarte",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "monrovia": {
+      "name": "Monrovia",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "pomona": {
+      "name": "Pomona",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "diamond-bar": {
+      "name": "Diamond Bar",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "walnut": {
+      "name": "Walnut",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "industry": {
+      "name": "Industry",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "irwindale": {
+      "name": "Irwindale",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "gardena": {
+      "name": "Gardena",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "hawthorne": {
+      "name": "Hawthorne",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "inglewood": {
+      "name": "Inglewood",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "lawndale": {
+      "name": "Lawndale",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "torrance": {
+      "name": "Torrance",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "lomita": {
+      "name": "Lomita",
+      "state": "California",
+      "county": "Los Angeles"
+    },
+    "chino": {
+      "name": "Chino",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "chino-hills": {
+      "name": "Chino Hills",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "montclair": {
+      "name": "Montclair",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "upland": {
+      "name": "Upland",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "ontario": {
+      "name": "Ontario",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "rancho-cucamonga": {
+      "name": "Rancho Cucamonga",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "fontana": {
+      "name": "Fontana",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "rialto": {
+      "name": "Rialto",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "bloomington": {
+      "name": "Bloomington",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "colton": {
+      "name": "Colton",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "san-bernardino": {
+      "name": "San Bernardino",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "loma-linda": {
+      "name": "Loma Linda",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "grand-terrace": {
+      "name": "Grand Terrace",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "redlands": {
+      "name": "Redlands",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "highland": {
+      "name": "Highland",
+      "state": "California",
+      "county": "San Bernardino"
+    },
+    "yucaipa": {
+      "name": "Yucaipa",
+      "state": "California",
+      "county": "San Bernardino"
+    }
+  }
+}
