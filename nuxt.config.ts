@@ -5,12 +5,17 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-gtag', '@nuxtjs/sitemap'],
+  modules: ['@nuxt/ui', '@nuxt/image', 'nuxt-gtag', '@nuxtjs/sitemap', '@zadigetvoltaire/nuxt-gtm'],
 
   // GA4 via nuxt-gtag
   gtag: {
     id: process.env.GTAG_ID || '',
     config: { anonymize_ip: true }
+  },
+  gtm: {
+    id: "GTM-KWVQH4V6", // your GTM container
+    enabled: true,
+    debug: false,       // set true for development preview
   },
 
   ui: { icons: ['heroicons'] },

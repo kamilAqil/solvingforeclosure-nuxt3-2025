@@ -7,10 +7,11 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && prisma generate",
     "migrate:deploy": "prisma migrate deploy",
-    "testDO" : "rm -rf .nuxt node_modules && npm install && nuxt build && nuxt generate && nuxt start"
-
+    "testDO": "rm -rf .nuxt node_modules && npm install && nuxt build && nuxt generate && nuxt start"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
     "@nuxt/image": "^1.10.0",
@@ -19,6 +20,7 @@
     "@nuxtjs/sitemap": "7.4.7",
     "@prisma/client": "^5.16.0",
     "@sendgrid/mail": "^8.1.5",
+    "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "nuxt": "^3.17.2",
     "nuxt-gtag": "^3.0.3",
     "valibot": "^1.1.0",
