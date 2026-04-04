@@ -61,9 +61,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // server-only
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-    sendGridApiKey: process.env.NUXT_SENDGRID_API_KEY,
-    sendGridFrom: process.env.NUXT_SENDGRID_FROM,
-    sendGridTo: process.env.NUXT_SENDGRID_TO,
+    mailgunApiKey: process.env.MAILGUN_API_KEY,
+    mailgunDomain: process.env.MAILGUN_DOMAIN,
+    mailgunFrom: process.env.MAILGUN_FROM,
+    mailgunTo: process.env.MAILGUN_TO || 'kaqil91@gmail.com',
+    mailgunApiBase: process.env.MAILGUN_API_BASE || 'https://api.mailgun.net',
     databaseUrl: process.env.DATABASE_URL || process.env.POSTGRES_URL,
 
     // public (client-exposed) — no secrets here
@@ -71,7 +73,8 @@ export default defineNuxtConfig({
       siteUrl:
         process.env.NUXT_PUBLIC_SITE_URL || 'https://solvingforeclosure.com',
       googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-      gtagId: process.env.GTAG_ID || ''
+      gtagId: process.env.GTAG_ID || '',
+      phone: process.env.NUXT_PUBLIC_PHONE || '714 787 8471'
     }
   }
 })

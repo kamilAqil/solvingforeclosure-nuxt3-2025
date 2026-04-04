@@ -55,15 +55,15 @@
 <script setup>
 const isOpen = ref(false)
 const links = [
-  { label: 'Timelines', to: '#timelines' },
-  { label: 'Options', to: '#options' },
-  { label: 'Agent vs Cash', to: '#agent-vs-cash' },
-  { label: 'FAQ', to: '#faq' },
-  { label: 'Contact', to: '#contact' }
+  { label: 'Timelines', to: '/#timelines' },
+  { label: 'Options', to: '/#options' },
+  { label: 'Agent vs Cash', to: '/#agent-vs-cash' },
+  { label: 'FAQ', to: '/#faq' },
+  { label: 'Contact', to: '/#contact' }
 ]
 
 const rc = useRuntimeConfig()
-const phone = rc.public?.phone || '+1-714-555-0111' // set NUXT_PUBLIC_PHONE to override
+const phone = rc.public?.phone || '714 787 8471' // set NUXT_PUBLIC_PHONE to override
 const telHref = computed(() => `tel:${phone.replace(/[^\d+]/g, '')}`)
 </script>
 

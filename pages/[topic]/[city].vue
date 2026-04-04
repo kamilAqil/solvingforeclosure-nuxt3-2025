@@ -3,6 +3,10 @@ import citiesData from "../../server/cities.json";
 import ContactForm from '~/components/solving_foreclosure/ContactForm.vue';
 
 const route = useRoute();
+const rc = useRuntimeConfig();
+const phone = computed(() => rc.public?.phone || '714 787 8471');
+const phoneLabel = computed(() => phone.value);
+const telHref = computed(() => `tel:${phone.value.replace(/[^\d+]/g, '')}`);
 
 // Nuxt dynamic params are always lowercase in the route object
 const topic = route.params.topic;
@@ -267,6 +271,39 @@ const faqs = [
         </div>
       </section>
 
+      <!-- How It Works -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+            How the Process Works in {{ cityData.name }}
+          </h2>
+          <div class="grid gap-4 md:grid-cols-3">
+            <article class="rounded-xl border border-gray-200 p-5 bg-gray-50">
+              <p class="text-sm font-semibold text-emerald-700">Step 1</p>
+              <h3 class="mt-1 text-lg font-semibold text-gray-900">Review Your Timeline</h3>
+              <p class="mt-2 text-gray-700">
+                We identify your current foreclosure stage, notice deadlines, and immediate protections
+                available in {{ cityData.county }} County.
+              </p>
+            </article>
+            <article class="rounded-xl border border-gray-200 p-5 bg-gray-50">
+              <p class="text-sm font-semibold text-emerald-700">Step 2</p>
+              <h3 class="mt-1 text-lg font-semibold text-gray-900">Choose a Strategy</h3>
+              <p class="mt-2 text-gray-700">
+                Based on your goals, we compare options to keep your home or sell quickly before auction.
+              </p>
+            </article>
+            <article class="rounded-xl border border-gray-200 p-5 bg-gray-50">
+              <p class="text-sm font-semibold text-emerald-700">Step 3</p>
+              <h3 class="mt-1 text-lg font-semibold text-gray-900">Take Action Fast</h3>
+              <p class="mt-2 text-gray-700">
+                We help you gather documents and move on the right next step so you do not lose valuable time.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- Foreclosure Options -->
       <section id="options" class="mb-16">
         <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-6 md:p-8">
@@ -361,10 +398,10 @@ const faqs = [
               Get Your Free Offer
             </a>
             <a
-              href="tel:1-800-555-0100"
+              :href="telHref"
               class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors"
             >
-              Call (800) 555-0100
+              Call {{ phoneLabel }}
             </a>
           </div>
         </div>

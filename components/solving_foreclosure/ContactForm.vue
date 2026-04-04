@@ -75,7 +75,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
   submitting.value = true
   try {
-    const { error } = await useFetch('/api/sf-leads', {
+    const { error } = await useFetch('/api/leads', {
       method: 'POST',
       body: {
         ...event.data,

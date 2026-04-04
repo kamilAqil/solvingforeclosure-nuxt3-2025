@@ -1,6 +1,6 @@
 <!-- components/ForeclosureFaq.vue -->
 <template>
-  <section class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-6 md:p-8">
+  <section id="faq" class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-6 md:p-8">
     <header class="mb-6">
       <h2 class="text-2xl md:text-3xl font-semibold text-emerald-700">FAQs</h2>
       <p v-if="intro" class="mt-2 text-gray-700">{{ intro }}</p>
