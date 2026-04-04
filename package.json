@@ -10,7 +10,7 @@
     "testDO": "rm -rf .nuxt node_modules && npm install && nuxt build && nuxt generate && nuxt start"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
@@ -27,6 +27,11 @@
     "valibot": "^1.1.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
+  },
+  "optionalDependencies": {
+    "@oxc-parser/binding-linux-x64-gnu": "0.87.0",
+    "@oxc-transform/binding-linux-x64-gnu": "0.87.0",
+    "@oxc-minify/binding-linux-x64-gnu": "0.87.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
