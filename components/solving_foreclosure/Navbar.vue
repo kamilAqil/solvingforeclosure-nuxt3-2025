@@ -1,5 +1,10 @@
 <template>
-  <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-50">
+  <header
+    :class="[
+      'shadow-sm sticky top-0 z-50',
+      isOpen ? 'bg-white' : 'bg-white/95 backdrop-blur'
+    ]"
+  >
     <UContainer class="flex items-center justify-between py-3">
       <!-- Wordmark -->
       <NuxtLink to="/" class="flex items-center gap-2 text-base font-semibold text-ink">
@@ -25,28 +30,43 @@
     </UContainer>
 
     <!-- Mobile sheet -->
-    <transition name="slide">
-      <div v-if="isOpen" class="fixed top-0 left-0 w-3/4 max-w-xs h-full bg-white shadow-md z-50 p-6 flex flex-col gap-4">
-        <div class="flex justify-between items-center mb-2">
-          <span class="text-lg font-semibold text-ink">Menu</span>
-          <button @click="isOpen = false" aria-label="Close menu">
-            <UIcon name="i-heroicons-x-mark" class="w-6 h-6 text-brand" />
-          </button>
-        </div>
-
-        <NuxtLink
-          v-for="l in links"
-          :key="l.to"
-          :to="l.to"
-          class="text-base text-slate-700 hover:text-brand"
+    <transition name="drawer">
+      <div v-if="isOpen" class="fixed inset-0 z-50 md:hidden">
+        <button
+          class="absolute inset-0 bg-stone-950/35"
+          aria-label="Close menu"
           @click="isOpen = false"
-        >
-          {{ l.label }}
-        </NuxtLink>
+        />
 
-        <UButton :to="telHref" color="primary" block @click="isOpen = false">
-          Talk to a specialist
-        </UButton>
+        <aside
+          class="mobile-drawer relative h-full w-[78vw] max-w-sm bg-white border-r border-stone-200 shadow-2xl flex flex-col"
+          aria-label="Mobile menu"
+        >
+          <div class="flex items-center justify-between px-6 py-5 border-b border-stone-200">
+            <span class="text-lg font-semibold text-ink">Menu</span>
+            <button @click="isOpen = false" aria-label="Close menu">
+              <UIcon name="i-heroicons-x-mark" class="w-6 h-6 text-brand" />
+            </button>
+          </div>
+
+          <nav class="flex flex-col gap-5 px-6 py-6 bg-white">
+            <NuxtLink
+              v-for="l in links"
+              :key="l.to"
+              :to="l.to"
+              class="text-lg text-slate-700 hover:text-brand"
+              @click="isOpen = false"
+            >
+              {{ l.label }}
+            </NuxtLink>
+          </nav>
+
+          <div class="mt-auto px-6 pb-6 bg-white">
+            <UButton :to="telHref" color="primary" block @click="isOpen = false">
+              Talk to a specialist
+            </UButton>
+          </div>
+        </aside>
       </div>
     </transition>
   </header>
@@ -68,6 +88,23 @@ const telHref = computed(() => `tel:${phone.replace(/[^\d+]/g, '')}`)
 </script>
 
 <style scoped>
-.slide-enter-active, .slide-leave-active { transition: transform .25s ease; }
-.slide-enter-from, .slide-leave-to { transform: translateX(-100%); }
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: opacity .2s ease;
+}
+
+.drawer-enter-active .mobile-drawer,
+.drawer-leave-active .mobile-drawer {
+  transition: transform .25s ease;
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+  opacity: 0;
+}
+
+.drawer-enter-from .mobile-drawer,
+.drawer-leave-to .mobile-drawer {
+  transform: translateX(-100%);
+}
 </style>
